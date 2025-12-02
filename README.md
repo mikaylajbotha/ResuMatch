@@ -1,4 +1,4 @@
-Markdown# ResuMatch – ATS Resume Optimizer
+# ResuMatch – ATS Resume Optimizer
 
 **Beat ATS systems in seconds.**  
 Upload your resume (PDF/DOCX or paste text) → paste any job description → instantly see your match score and exactly what’s missing.
