@@ -2,9 +2,6 @@
 
 A **free, open-source** tool that instantly compares your resume to any job description and tells you **exactly what’s missing**.
 
-![Demo](https://via.placeholder.com/800x400?text=ResuMatch+Demo)  
-*(Replace with actual screenshot when available)*
-
 🚀 **Live Demo** (when deployed): https://resumatch.yourname.com *(optional)*
 
 ## Features
@@ -17,9 +14,6 @@ A **free, open-source** tool that instantly compares your resume to any job desc
 - **100% local processing** – your resume file never leaves your machine *(only extracted text is sent to OpenAI)*  
 - No accounts, no tracking, completely free
 
-## Screenshots
-
-*(Add screenshots here later)*
 
 ## How to Run Locally (Copy-Paste Instructions)
 
@@ -52,13 +46,26 @@ echo OPENAI_API_KEY=sk-your-real-key-here > .env
 
 # 6. Run the app
 python app.py
-The app will be available at: http://127.0.0.1:5000
-Tech Stack
 
-Python + Flask (backend)
-OpenAI API (GPT-4o or GPT-3.5-turbo)
-PyMuPDF, python-docx, pytesseract + Pillow (resume parsing)
-Vanilla HTML/CSS/JS (frontend – no heavy frameworks)
+The app will be available at: **http://127.0.0.1:5000**
 
-Contributing
-Contributions are welcome! Feel free to submit issues or pull requests.
+## Tech Stack
+
+- **Backend**: Python + Flask  
+- **AI**: OpenAI API (GPT-4o or GPT-3.5-turbo)  
+- **Resume Parsing**: PyMuPDF, python-docx, pytesseract + Pillow  
+- **Frontend**: Vanilla HTML/CSS/JavaScript (no heavy frameworks)
+
+## Contributing
+
+Contributions are welcome!  
+Feel free to open issues, submit pull requests, or suggest new features.
+
+## License
+
+MIT License – free to use, modify, and distribute.
+
+---
+
+⭐ **If this helped you land your next job, consider giving the repo a star on GitHub!**  
+Made with ❤️ for job seekers everywhere.
