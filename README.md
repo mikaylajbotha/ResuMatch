@@ -30,28 +30,36 @@ echo OPENAI_API_KEY=sk-your-key-here > .env
 
 # Run the app
 python app.py
-Open your browser → http://127.0.0.1:5000
-Requirements
 
-Python 3.9+
-Tesseract OCR (only needed for scanned/image-based PDFs)
-→ Windows: https://github.com/UB-Mannheim/tesseract/wiki
-→ macOS: brew install tesseract
-→ Ubuntu/Debian: sudo apt install tesseract-ocr
+**Open your browser →** **http://127.0.0.1:5000**
 
-Privacy & Security
+### Requirements
 
-Your resume file is deleted immediately after processing
-No data is ever stored on disk
-Only plain text is sent to OpenAI for analysis
+- Python 3.9+
+- Tesseract OCR *(only needed for scanned/image-based PDFs)*  
+  → Windows: https://github.com/UB-Mannheim/tesseract/wiki  
+  → macOS: `brew install tesseract`  
+  → Ubuntu/Debian: `sudo apt install tesseract-ocr`
 
-Project Structure
-textResuMatch/
+### Privacy & Security
+
+- Your resume file is deleted immediately after processing  
+- No data is ever stored on disk  
+- Only plain text is sent to OpenAI for analysis
+
+### Project Structure
+
+ResuMatch/
 ├── app.py
 ├── index.html
 ├── style.css
 ├── requirements.txt
 ├── .gitignore
 └── README.md
-Made with love for job seekers worldwide
+
+
+
+Made with love for job seekers worldwide  
 If this helps you land your dream job — please give it a star!
+
+
