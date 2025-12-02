@@ -1,0 +1,193 @@
+/* --- Body and Layout --- */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- Headings --- */
+h1 {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 2.5em;
+    color: #2c3e50;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #555;
+    font-size: 1.2em;
+}
+
+/* --- Form Styling --- */
+.input-form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.input-form label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+textarea, input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 180px;
+    resize: vertical;
+}
+
+/* --- Button Styling --- */
+button {
+    padding: 12px 25px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* --- Match Score Bar --- */
+.match-bar-container {
+    width: 100%;
+    height: 25px;
+    background: #ddd;
+    border-radius: 12px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.match-bar {
+    height: 100%;
+    background: linear-gradient(to right, #ff4d4d, #ffcc00, #2ecc71);
+    text-align: right;
+    padding-right: 5px;
+    color: #fff;
+    font-weight: bold;
+    line-height: 25px;
+    border-radius: 12px;
+    transition: width 0.5s ease;
+}
+
+/* --- Highlighted Keywords --- */
+.highlight {
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 3px;
+    cursor: help;
+    position: relative;
+    display: inline-block;
+}
+
+.highlight.high {
+    background-color: #ff4d4d;
+    color: #fff;
+}
+
+.highlight.medium {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+.highlight.low {
+    background-color: #66cc66;
+    color: #fff;
+}
+
+/* --- Tooltip Styling --- */
+.highlight[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    font-size: 12px;
+    z-index: 1000;
+    opacity: 1;
+    pointer-events: none;
+}
+
+/* --- Output / Results Styling --- */
+.output, .highlighted-resume {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+/* --- Section Headings --- */
+h3 {
+    margin-top: 25px;
+    color: #2c3e50;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+/* --- Lists inside Results --- */
+ul {
+    background: #fff;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    list-style-type: disc;
+    margin-bottom: 20px;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+/* --- File input spacing --- */
+input[type="file"] {
+    padding: 6px;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .match-bar {
+        font-size: 12px;
+        line-height: 20px;
+    }
+}

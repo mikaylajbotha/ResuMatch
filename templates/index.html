@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ResuMatch – ATS Resume Optimizer</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- Internal CSS for additional styling -->
+    <style>
+        /* --- Body and general layout --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        /* --- Main title --- */
+        h1 { color: #2c3e50; }
+
+        /* --- Subtitle below title --- */
+        .subtitle { color: #34495e; margin-bottom: 20px; }
+
+        /* --- Form container styling --- */
+        .input-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        /* --- Form labels --- */
+        .input-form label { font-weight: bold; display: block; margin-top: 15px; }
+
+        /* --- Textareas for resume and job description --- */
+        .input-form textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        /* --- File input for resume upload --- */
+        .input-form input[type=file] { margin-top: 10px; }
+
+        /* --- Submit button --- */
+        .input-form button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .input-form button:hover { background-color: #2980b9; }
+
+        /* --- Match score bar container --- */
+        .match-bar-container {
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 20px;
+            margin-bottom: 5px;
+        }
+
+        /* --- Match score bar --- */
+        .match-bar {
+            height: 100%;
+            background-color: #2ecc71;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            font-weight: bold;
+        }
+
+        /* --- Highlighted missing keywords --- */
+        .highlight {
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            border-radius: 3px;
+            padding: 2px 4px;
+            display: inline-block;
+        }
+
+        /* --- Tooltip for highlighted keywords --- */
+        .highlight::after {
+            content: attr(title);
+            position: absolute;
+            left: 50%;
+            bottom: 125%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.75);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            width: 220px;
+            z-index: 10;
+        }
+        .highlight:hover::after { opacity: 1; }
+
+        /* --- Keyword importance colors --- */
+        .high { background-color: #ff4d4d; }
+        .medium { background-color: #ffcc00; }
+        .low { background-color: #90ee90; }
+
+        /* --- Section headings --- */
+        h3 { margin-top: 20px; color: #2c3e50; }
+
+        /* --- Lists inside analysis results --- */
+        ul { list-style-type: disc; margin-left: 20px; }
+
+        /* --- Highlighted resume container --- */
+        pre.highlighted-resume {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* --- Error/output styling --- */
+        pre.output {
+            background-color: #ffe6e6;
+            padding: 10px;
+            border-radius: 5px;
+            color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+<!-- --- Page Title --- -->
+<h1>ResuMatch</h1>
+<p class="subtitle">ATS-Friendly Resume Optimizer</p>
+
+<!-- --- Resume/Job Description Input Form --- -->
+<form method="POST" enctype="multipart/form-data" class="input-form">
+    <label>Resume (paste text or upload PDF/DOCX)</label>
+    <textarea name="resume" placeholder="Paste your resume here"></textarea>
+    <input type="file" name="resume_file" accept=".pdf,.docx">
+
+    <label>Job Description</label>
+    <textarea name="job" placeholder="Paste the job description here"></textarea>
+
+    <button type="submit">Analyze Resume</button>
+</form>
+
+{% if result %}
+    <!-- --- Analysis Results Section --- -->
+    <h2>Analysis of Resume vs. Job Description</h2>
+
+    {% if result.error %}
+        <!-- --- Display errors if any --- -->
+        <pre class="output">{{ result.error }}</pre>
+    {% else %}
+
+        <!-- --- Match Score --- -->
+        <h3>Match Score</h3>
+        <div class="match-bar-container">
+            <div class="match-bar" style="width: {{ result.match_score }}%;">{{ result.match_score }}%</div>
+        </div>
+
+        <!-- --- Missing Keywords --- -->
+        <h3>Missing Keywords</h3>
+        {% if result.missing_keywords %}
+            <ul>
+            {% for keyword in result.missing_keywords %}
+                {% set importance = result.keyword_explanations[keyword].importance if result.keyword_explanations and keyword in result.keyword_explanations else 'medium' %}
+                {% set explanation = result.keyword_explanations[keyword].explanation if result.keyword_explanations and keyword in result.keyword_explanations else 'No explanation available.' %}
+                <li><span class="highlight {{ importance }}" title="{{ explanation }}">{{ keyword }}</span></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>All required keywords are present!</p>
+        {% endif %}
+
+        <!-- --- Suggested Skills to Add --- -->
+        <h3>Skills to Add</h3>
+        {% if result.skills_to_add %}
+            <ul>
+            {% for skill in result.skills_to_add %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No additional skills suggested.</p>
+        {% endif %}
+
+        <!-- --- Bullet Point Improvements --- -->
+        <h3>Suggested Bullet Point Improvements</h3>
+        {% if result.bullet_point_improvements %}
+            <ul>
+            {% for bullet in result.bullet_point_improvements %}
+                <li>{{ bullet }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No bullet point improvements suggested.</p>
+        {% endif %}
+
+        <!-- --- Short Explanation --- -->
+        <h3>Short Explanation</h3>
+        <p>{{ result.explanation }}</p>
+
+        <!-- --- Highlighted Resume Text --- -->
+        {% if resume_text %}
+            <h3>Resume with Missing Keywords Highlighted</h3>
+            <pre class="highlighted-resume">{{ resume_text|safe }}</pre>
+        {% endif %}
+
+    {% endif %}
+{% endif %}
+
+</body>
+</html>
