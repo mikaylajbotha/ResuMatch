@@ -48,14 +48,23 @@ python app.py
 ```
 
 The app will run at http://127.0.0.1:5000
-Tech Stack
 
-Python + Flask (backend)
-OpenAI API (GPT-4o or GPT-3.5-turbo)
-PyMuPDF, python-docx, pytesseract + Pillow (resume parsing)
-Vanilla HTML/CSS/JS (frontend – no React/Vue)
+## Tech Stack
 
-Contributing
-Contributions are very welcome!
-Feel free to open an issue or submit a pull request.
+| Component         | Technology                                      |
+|-------------------|---------------------------------------------------------|
+| **Backend**       | Python + Flask                                          |
+| **AI**            | OpenAI API (GPT-4o or GPT-3.5-turbo)                    |
+| **Resume Parsing**| PyMuPDF, python-docx, pytesseract + Pillow              |
+| **Frontend**      | Vanilla HTML / CSS / JavaScript (no frameworks)         |
 
+## Contributing
+
+Contributions are very welcome!  
+
+Whether it’s a bug fix, new feature, better UI, or improved parsing – feel free to:
+- Open an issue
+- Submit a pull request
+- Suggest ideas
+
+All contributions are appreciated ❤️
