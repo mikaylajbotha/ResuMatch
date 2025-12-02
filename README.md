@@ -1,13 +1,14 @@
 # ResuMatch – ATS Resume Optimizer
 
 **Beat ATS systems in seconds.**  
-Upload your resume (PDF/DOCX or paste text) → paste any job description → instantly see your match score and exactly what’s missing.
+Upload your resume (PDF/DOCX or paste text) → paste any job description → instantly get an AI-powered match score and exact fixes.
 
-- AI-powered scoring (0–100)  
-- Missing keywords highlighted with importance level  
-- Smart tooltips explaining why each keyword matters  
-- Skills to add & bullet-point improvement suggestions  
-- Works completely locally — your resume is deleted instantly
+### Features
+- AI-powered match score (0–100)
+- Missing keywords highlighted with **high/medium/low** importance
+- Hover tooltips explaining why each keyword matters
+- Skills to add & smarter bullet-point suggestions
+- Works 100% locally — your resume is deleted instantly after analysis
 
 ### Quick Start (Copy & Paste)
 
@@ -30,36 +31,3 @@ echo OPENAI_API_KEY=sk-your-key-here > .env
 
 # Run the app
 python app.py
-
-**Open your browser →** **http://127.0.0.1:5000**
-
-### Requirements
-
-- Python 3.9+
-- Tesseract OCR *(only needed for scanned/image-based PDFs)*  
-  → Windows: https://github.com/UB-Mannheim/tesseract/wiki  
-  → macOS: `brew install tesseract`  
-  → Ubuntu/Debian: `sudo apt install tesseract-ocr`
-
-### Privacy & Security
-
-- Your resume file is deleted immediately after processing  
-- No data is ever stored on disk  
-- Only plain text is sent to OpenAI for analysis
-
-### Project Structure
-
-ResuMatch/
-├── app.py
-├── index.html
-├── style.css
-├── requirements.txt
-├── .gitignore
-└── README.md
-
-
-
-Made with love for job seekers worldwide  
-If this helps you land your dream job — please give it a star!
-
-
