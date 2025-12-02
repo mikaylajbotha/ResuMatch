@@ -7,11 +7,10 @@ A **free, open-source** tool that instantly compares your resume to any job desc
 - Upload **PDF/DOCX** or paste resume text  
 - Paste any job description  
 - AI-powered **match score (0–100)**  
-- Highlights **missing keywords** with importance level & explanations  
-- Suggests **skills to add** + improved bullet-point suggestions  
+- Highlights missing keywords with importance level & explanations  
+- Suggests skills to add + improved bullet-point suggestions  
 - **100% local processing** – your resume file never leaves your machine *(only extracted text is sent to OpenAI)*  
 - No accounts, no tracking, completely free
-
 
 ## How to Run Locally (Copy-Paste Instructions)
 
@@ -28,19 +27,19 @@ python -m venv venv
 venv\Scripts\activate
 
 # macOS / Linux
-# source venv/bin/activate
+source venv/bin/activate
 
 # 3. Install dependencies
 pip install Flask openai python-dotenv PyMuPDF pytesseract Pillow python-docx python-magic
 
 # 4. (Important for scanned PDFs) Install Tesseract OCR
-# Windows → Download & add to PATH: https://github.com/UB-Mannheim/tesseract/wiki
+# Windows → https://github.com/UB-Mannheim/tesseract/wiki
 # macOS → brew install tesseract
 # Ubuntu/Debian → sudo apt install tesseract-ocr
 
 # 5. Create .env file with your OpenAI key
 echo OPENAI_API_KEY=sk-your-real-key-here > .env
-# Get your key from → https://platform.openai.com/api-keys
+# Get your key → https://platform.openai.com/api-keys
 
 # 6. Run the app
 python app.py
