@@ -18,7 +18,6 @@
 
 ## How to Run Locally
 
-```bash
 # 1. Clone or download the project
 git clone https://github.com/yourusername/ResuMatch.git
 cd ResuMatch
