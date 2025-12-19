@@ -49,14 +49,9 @@ echo OPENAI_API_KEY=sk-your-real-key-here > .env
 python app.py
 The app will run at: http://127.0.0.1:5000
 
----
-
-## Tech Stack
-
-| Component         | Technology                                   |
-|------------------|----------------------------------------------|
-| **Backend**       | Python + Flask                               |
-| **AI**            | OpenAI API (GPT-4o or GPT-3.5-turbo)        |
-| **Resume Parsing**| PyMuPDF, python-docx, pytesseract + Pillow  |
-| **Frontend**      | Vanilla HTML / CSS / JavaScript (no frameworks) |
-
+Tech Stack
+Component	Technology
+Backend	Python + Flask
+AI	OpenAI API (GPT-4o or GPT-3.5-turbo)
+Resume Parsing	PyMuPDF, python-docx, pytesseract + Pillow
+Frontend	Vanilla HTML / CSS / JavaScript (no frameworks)
